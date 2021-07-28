@@ -7,17 +7,9 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=AM_CHTML"></script>
       <script type="text/javascript" src="https://example.com/mathjax/MathJax.js?config=TeX-AMS_CHTML"></script>
     <style>
-    .responsive-image {
-      display: inline-block;
-      vertical-align: middle;
-      width: 60%;
-      max-width: 500px;
-    }
     img {
-      width: 100%;
-      height: auto;
-    }
-
+          max-width: 100%;
+        }
     </style>
 </head>
 <body>
@@ -39,7 +31,7 @@
           <blockquote>
 
           <p>
-          <h1> Principe et détection </h1>
+          <h2> Principe et détection </h2>
 
             </br></br></br>
 
@@ -97,12 +89,12 @@
 
           </div>
 
-          <h1>Résultats</h1>
+          <h2>Résultats</h2>
             <br/><br/>
 
             <blockquote>
 
-            <h2>Localisation </h2>
+            <h3>Localisation </h3>
               <br/><br/>
 
               <p>La réalisation de simulation Monte-Carlo basé sur le calcul de N expériences est une méthode pour reconstruire une distribution de probabilité sur la position de
@@ -121,7 +113,7 @@
               forment ainsi notre distribution de probabilité sur la localisation de la source. A droite, nous avons représenté l’aire de confiance à 90% de la distribution. Cela signifie que pour toutes nos
               expériences, nous avons 90% des minimums qui sont tombés dans cette région du ciel.</p>
 
-            <h2> Distribution de l'aire de confiance </h2>
+            <h3> Distribution de l'aire de confiance </h3>
               <br/><br/>
 
               <p>Précédemment, nous avons pu voir le résultat de la méthode de triangulation par des simulations Monte-Carlo. Nous avons vu que l’on pouvait assez bien reconstruire la position de la supernova avec
@@ -162,194 +154,160 @@
 
                 <div class="im_center" style="--w: 50%; --h: 25%;"> <img src="Picture/MC_ana_M1.png"> </div>
 
+            <br/>
+
+          <h2>Probabilité bayésienne</h2>
+            <br/><br/>
+
+            <blockquote> Précédemment, nous avons décrit notre méthode de triangulation par une approche fréquentiste. Nous avons démontré que la localisation dans le ciel de la supernova fait varier l’aire de confiance à
+            90% obtenue par triangulation. Nous allons maintenant essayer d’implémenter une méthode de probabilité bayésienne afin de contraindre encore plus la position de la supernova. En effet, cette étude
+            consiste a étudier un algorithme de triangulation permettant de détecter la prochaine supernova galactique. On va donc considérer dans la suite que la source se trouve dans notre galaxie. Pour étudier
+            l’influence de cette information, nous utiliserons le théorème de Bayes :
+
+            <br/><br/>
+
+            <div class="cmath" align="center">
+              `P(A|B) = (P(B|A) P(A))/(P(B))`
+            </div>
+
+            <br/><br/>
+
+            <p>Le théorème précédent permet de calculer des probabilités en prenant en compte un fait que l’on connaît en amont. Ici, on définit P (B|A) comme la vraisemblance (ou likelihood en anglais). Ce terme
+            nous décrit la distribution de probabilité sur la présence d’une source dans une certaine position (α, δ) du ciel. Le deuxième terme P (A) est la probabilité à priori (ou prior), il s’agit d’un terme
+            qui nous donne une information déjà connu qu’il faut prendre en compte. Il va permettre de calculer d’une manière différente les probabilités de présence de la supernova dans le ciel. Finalement, le
+            dernier terme P (B) est l’évidence, c’est un terme de normalisation. On pourra donc d’une part s’affranchir du dénominateur et d’autre part remplacer les "A" et "B" par les variables dans notre cas,
+            soit les coordonnées (α, δ) ainsi que θ pour notre prior. On aura donc le théorème de Bayes qui s’écrira comme suit :</p>
+
+            <br/><br/>
+
+            <div class="cmath" align="center">
+              `P(alpha, delta |theta) &#8733; P(theta|alpha, delta) P(alpha, delta)`
+            </div>
+
+            <br/><br/>
+
+            <p>Il nous faut faire attention au choix de la carte qui nous servira de prior. Celle-ci est un des éléments centraux de cette étude, nous savons que les supernovae à effondrement de coeur sont causées
+            par la mort des étoiles massives. Une bonne approximation sera donc de prendre comme prior une carte montrant la densité d’étoile dans notre galaxie. En effet, il paraît logique que plus le nombre
+            d’étoile dans une direction du ciel est important, plus la probabilité d’observer une supernova dans cette même direction sera importante. Maintenant que nous avons nos deux cartes définies à partir
+            du théorème de Bayes, nous pouvons les utiliser afin de contraindre la position de la source. De la même manière qu’avant, nous définissons une source placée au centre galactique.</p>
+
+            <div class="im_center" style="--w: 50%; --h: 25%;"> <img src="Picture/like_M1.png"> </div>
+
+            <p>Ce résultat montre que l’application d’une condition simple sur la distribution de probabilité permet de réduire de manière significative l’aire de confiance. La source a été placé initialement au
+            centre galactique mais on pourra effectuer la même manoeuvre pour toutes les positions du ciel possible. De la même manière qu’avec la figure 11, nous plaçons la source dans chaque pixel successivement
+            en calculant en même temps l’aire de confiance dans toutes les directions.</p>
+
+            <div class="im_center" style="--w: 50%; --h: 25%;"> <img src="Picture/MC_like_M1.png"> </div>
+
+            <p>La figure ci-dessus nous montre deux cartes de distributions de l’aire de confiance (toujours à 90% ). Celle de gauche a été calculé par une approche fréquentiste, quant à celle de droite, elle a été
+            calculé par l’approche bayésienne que nous avons présenté. La couleur de chaque pixel représente la valeur de la surface de l’aire à 90% . On commence à voir une différence entre ces deux cartes du fait
+            de l’ajout d’un prior dans les calculs. De manière à mieux distinguer la différence entre les deux cartes de la figure ci-dessus, nous pouvons introduire la formule permettant de calculer l’écart-relatif tels
+            que :</p>
+
+            <br/><br/>
+
+            <div class="cmath" align="center">
+              `f_(text{relatif}) = (f_(text{prior}) - f_(text{sans prior}))/(f_(text{prior})) &#215; 100`
+            </div>
+
+            <br/><br/>
+
+            <p>L’écart relatif peut être calculé en remplaçant <math> `f_(text{prior})` </math> par la carte de droite et <math> `f_(text{sans prior})` </math> par la carte de gauche de la figure ci-dessus. Cette carte
+            doit nous montrer les directions où l’approche bayésienne est plus précise qu’une approche fréquentiste et au contraire, les emplacements du ciel où cette approche ne permet pas une bonne reconstruction
+            de la position de la source.</p>
+
+            <div class="im_center" style="--w: 50%; --h: 25%;"> <img src="Picture/ecart_M1.png"></div>
+
+            <p>Sur la figure ci-dessus, l’écart-relatif entre les deux cartes de la figure 16 est représenté. Sur cette carte, la couleur de chaque pixel représente la variation de l’aire à 90 % entre les deux cartes.
+            La barre de couleur est faite de tel sorte que lorsque la couleur du pixel tend vers le bleu, la carte qui inclue le prior a une aire plus petite que celle qui ne prend pas en compte le prior. Si la
+            couleur est autour du blanc, il n’y a pas une grande différence entre les deux cartes. Enfin, si la couleur du pixel tend vers le rouge, la carte qui inclue le prior possède une aire à 90 % plus grande
+            que celle qui est calculé sans le prior. Pour finir, l’intensité du pixel correspond à la valeur (en pourcentage) de la diminution ou de l’augmentation de l’aire à 90 % lorsque la source se trouve dans
+            ce pixel. Le plan galactique ainsi que le petit et le grand nuage de magellan sont plutôt bien reconstruit par cette méthode ce qui signifie que ceux-ci ont une influence notable sur le résultat final.</p>
+
+            <br/>
+
+            <p>La diminution entre l’approche bayésienne et l’approche fréquentiste peut aller jusqu’à 60% lorsque la source se situe dans notre galaxie ou dans des galaxies voisines. Au contraire, lorsque la source
+            se trouve en dehors du plan galactique, on a une augmentation de l’aire à 90% ce qui est normal puisque notre prior concerne les sources potentielles de notre galaxie et non les sources extragalactiques.
+            Le fait que l’aire de confiance augmente en taille lorsque la source est en dehors du plan galactique est bon signe car cela signifie que la probabilité dans chaque pixel composant cette aire diminue par
+            rapport à l’approche fréquentiste.</p>
+
+            <br/>
+
+            <p>Au final, l’utilisation d’une approche bayésienne permet de diminuer la taille de l’aire de confiance lorsque la source est galactique de manière notable. En revanche,
+            pour une source extragalactique, nous avons montré que la probabilité de détection diminue dans chaque pixel ce qui est encourageant. Cette approche peut donc être un bon moyen de localiser de manière
+            précise la prochaine supernova galactique.</p> </blockquote>
+
+          <br/>
+          <h2>Quelques exemples ...</h2>
+
+            <br/><br/>
+
+            <blockquote> <p>Dans les figures précédentes, la combinaison des 5 détecteurs permet de calculer une zone de confiance assez restreinte, dans la suite nous pourrons essayer de voir les différentes zones
+            de détections pour différentes combinaisons de détecteurs.</p>
+
+            <br/>
+            <h3>IceCube - JUNO - KM3NeT </h3>
+              <br/><br/>
+
+              <div class="im_center" style="--w: 50%; --h: 25%;"> <img src="Picture/IC_JUNO_KM3.png"> </div>
 
 
-          </div>
-
-          <div class="contenu" style="position:absolute; left:4%; top:6100px; width:90%; height:2150px">
-
-            <p>
-            <h1>Probabilité bayésienne</h1>
-            <p>
-            <p>
-
-              <blockquote> Précédemment, nous avons décrit notre méthode de triangulation par une approche fréquentiste. Nous avons démontré que la localisation dans le ciel de la supernova fait varier l’aire de confiance à
-              90% obtenue par triangulation. Nous allons maintenant essayer d’implémenter une méthode de probabilité bayésienne afin de contraindre encore plus la position de la supernova. En effet, cette étude
-              consiste a étudier un algorithme de triangulation permettant de détecter la prochaine supernova galactique. On va donc considérer dans la suite que la source se trouve dans notre galaxie. Pour étudier
-              l’influence de cette information, nous utiliserons le théorème de Bayes :
-
-              <br /> <br />
-
-              <div class="cmath" align="center">
-                `P(A|B) = (P(B|A) P(A))/(P(B))`
-              </div>
-
-              <br /> <br />
-
-              Le théorème précédent permet de calculer des probabilités en prenant en compte un fait que l’on connaît en amont. Ici, on définit P (B|A) comme la vraisemblance (ou likelihood en anglais). Ce terme
-              nous décrit la distribution de probabilité sur la présence d’une source dans une certaine position (α, δ) du ciel. Le deuxième terme P (A) est la probabilité à priori (ou prior), il s’agit d’un terme
-              qui nous donne une information déjà connu qu’il faut prendre en compte. Il va permettre de calculer d’une manière différente les probabilités de présence de la supernova dans le ciel. Finalement, le
-              dernier terme P (B) est l’évidence, c’est un terme de normalisation. On pourra donc d’une part s’affranchir du dénominateur et d’autre part remplacer les "A" et "B" par les variables dans notre cas,
-              soit les coordonnées (α, δ) ainsi que θ pour notre prior. On aura donc le théorème de Bayes qui s’écrira comme suit :
-
-              <br /> <br />
-
-              <div class="cmath" align="center">
-                `P(alpha, delta |theta) &#8733; P(theta|alpha, delta) P(alpha, delta)`
-              </div>
-
-              <br /> <br />
-
-              Il nous faut faire attention au choix de la carte qui nous servira de prior. Celle-ci est un des éléments centraux de cette étude, nous savons que les supernovae à effondrement de coeur sont causées
-              par la mort des étoiles massives. Une bonne approximation sera donc de prendre comme prior une carte montrant la densité d’étoile dans notre galaxie. En effet, il paraît logique que plus le nombre
-              d’étoile dans une direction du ciel est important, plus la probabilité d’observer une supernova dans cette même direction sera importante. Maintenant que nous avons nos deux cartes définies à partir
-              du théorème de Bayes, nous pouvons les utiliser afin de contraindre la position de la source. De la même manière qu’avant, nous définissons une source placée au centre galactique.
-
-              <div style="text-align:center">
-              <img src="Picture/like_M1.png" class="like_M1">
-              </div>
-
-              Ce résultat montre que l’application d’une condition simple sur la distribution de probabilité permet de réduire de manière significative l’aire de confiance. La source a été placé initialement au
-              centre galactique mais on pourra effectuer la même manoeuvre pour toutes les positions du ciel possible. De la même manière qu’avec la figure 11, nous plaçons la source dans chaque pixel successivement
-              en calculant en même temps l’aire de confiance dans toutes les directions.
-
-              <div style="text-align:center">
-              <img src="Picture/MC_like_M1.png" class="MC_like_M1">
-              </div>
-
-              La figure ci-dessus nous montre deux cartes de distributions de l’aire de confiance (toujours à 90% ). Celle de gauche a été calculé par une approche fréquentiste, quant à celle de droite, elle a été
-              calculé par l’approche bayésienne que nous avons présenté. La couleur de chaque pixel représente la valeur de la surface de l’aire à 90% . On commence à voir une différence entre ces deux cartes du fait
-              de l’ajout d’un prior dans les calculs. De manière à mieux distinguer la différence entre les deux cartes de la figure ci-dessus, nous pouvons introduire la formule permettant de calculer l’écart-relatif tels
-              que :
-
-              <br /> <br />
-
-              <div class="cmath" align="center">
-                `f_(text{relatif}) = (f_(text{prior}) - f_(text{sans prior}))/(f_(text{prior})) &#215; 100`
-              </div>
-
-              <br /> <br />
-
-              L’écart relatif peut être calculé en remplaçant <math> `f_(text{prior})` </math> par la carte de droite et <math> `f_(text{sans prior})` </math> par la carte de gauche de la figure ci-dessus. Cette carte
-              doit nous montrer les directions où l’approche bayésienne est plus précise qu’une approche fréquentiste et au contraire, les emplacements du ciel où cette approche ne permet pas une bonne reconstruction
-              de la position de la source.
-
-              <div style="text-align:center">
-              <img src="Picture/ecart_M1.png" class="ecart_M1">
-              </div>
-
-              Sur la figure ci-dessus, l’écart-relatif entre les deux cartes de la figure 16 est représenté. Sur cette carte, la couleur de chaque pixel représente la variation de l’aire à 90 % entre les deux cartes.
-              La barre de couleur est faite de tel sorte que lorsque la couleur du pixel tend vers le bleu, la carte qui inclue le prior a une aire plus petite que celle qui ne prend pas en compte le prior. Si la
-              couleur est autour du blanc, il n’y a pas une grande différence entre les deux cartes. Enfin, si la couleur du pixel tend vers le rouge, la carte qui inclue le prior possède une aire à 90 % plus grande
-              que celle qui est calculé sans le prior. Pour finir, l’intensité du pixel correspond à la valeur (en pourcentage) de la diminution ou de l’augmentation de l’aire à 90 % lorsque la source se trouve dans
-              ce pixel. Le plan galactique ainsi que le petit et le grand nuage de magellan sont plutôt bien reconstruit par cette méthode ce qui signifie que ceux-ci ont une influence notable sur le résultat final.
-
-              <p>
-
-              La diminution entre l’approche bayésienne et l’approche fréquentiste peut aller jusqu’à 60% lorsque la source se situe dans notre galaxie ou dans des galaxies voisines. Au contraire, lorsque la source
-              se trouve en dehors du plan galactique, on a une augmentation de l’aire à 90% ce qui est normal puisque notre prior concerne les sources potentielles de notre galaxie et non les sources extragalactiques.
-              Le fait que l’aire de confiance augmente en taille lorsque la source est en dehors du plan galactique est bon signe car cela signifie que la probabilité dans chaque pixel composant cette aire diminue par
-              rapport à l’approche fréquentiste.
-
-              <p>
-
-              Au final, l’utilisation d’une approche bayésienne permet de diminuer la taille de l’aire de confiance lorsque la source est galactique de manière notable. En revanche,
-              pour une source extragalactique, nous avons montré que la probabilité de détection diminue dans chaque pixel ce qui est encourageant. Cette approche peut donc être un bon moyen de localiser de manière
-              précise la prochaine supernova galactique. </blockquote>
-
-          </div>
-
-          <div class="contenu" style="position:absolute; left:4%; top:6350px; width:90%; height:1300px">
-
-            <p>
-            <h1>Quelques exemples ...</h1>
-            <p>
-            <p>
-
-              <blockquote> Dans les figures précédentes, la combinaison des 5 détecteurs permet de calculer une zone de confiance assez restreinte, dans la suite nous pourrons essayer de voir les différentes zones
-              de détections pour différentes combinaisons de détecteurs.
-
-              <p>
-              <h2>IceCube - JUNO - KM3NeT </h2>
-              <p>
-              <p>
-
-              <div style="text-align:center">
-              <img src="Picture/IC_JUNO_KM3.png" class="IC_JUNO_KM3">
-              </div>
-
-
-              La même expérience peut être refaite pour une autre combinaison de 3 détecteurs. Ici nous avons choisi IceCube - JUNO - KM3NeT. L’aire de confiance est beaucoup plus étendue que pour le trio de
+              <p>La même expérience peut être refaite pour une autre combinaison de 3 détecteurs. Ici nous avons choisi IceCube - JUNO - KM3NeT. L’aire de confiance est beaucoup plus étendue que pour le trio de
               détecteur précédent, ceci est du à l’incertitude entre KM3NeT et JUNO qui est nettement supérieure. Cependant, l’approche bayésienne permet encore une fois de réduire considérablement la taille de
-              l’aire de confiance à 90 %. La diminution est encore une fois de l’ordre de 60 %.
+              l’aire de confiance à 90 %. La diminution est encore une fois de l’ordre de 60 %.</p>
 
-              <p>
-              <h2>IceCube - KM3NeT - Hyper-Kamiokande </h2>
-              <p>
-              <p>
+              <br/>
+            <h3>IceCube - KM3NeT - Hyper-Kamiokande </h3>
+              <br/><br/>
 
-              <div style="text-align:center">
-              <img src="Picture/IC_KM3_HK.png" class="IC_KM3_HK">
-              </div>
+              <div class="im_center" style="--w: 50%; --h: 25%;"> <img src="Picture/IC_KM3_HK.png"> </div>
 
-
-              Nous pouvons retrouver ce que nous montre la figure, l’intersection entre 3 sphères est deux points dans laquelle une des deux contient notre source. Nous utilisons ici IceCube -
+              <p>Nous pouvons retrouver ce que nous montre la figure, l’intersection entre 3 sphères est deux points dans laquelle une des deux contient notre source. Nous utilisons ici IceCube -
               KM3NeT - Hyper-Kamiokande. De gauche à droite, nous avons la carte de distribution des N minimums de la fonction <math> `chi^2` </math> , l’aire de confiance à 90 % dans une approche
               fréquentiste et  enfin l’aire de confiance en utilisant une approche bayésienne. Avec la première approche, la valeur de l’aire est d’environ <math> `330 text{ deg}^2` </math> ,
               en revanche, en utilisant une approche bayésienne, la valeur de cette surface diminue jusqu’à <math> `140 text{ deg}^2` </math>. La diminution est très importante (environ 58%) et
-              signifie que notre approche bayésienne fonctionne tout autant pour seulement 3 détecteurs.
+              signifie que notre approche bayésienne fonctionne tout autant pour seulement 3 détecteurs.</p>
 
-              <p>
-              <h2>IceCube - KM3NeT - Hyper-Kamiokande - JUNO </h2>
-              <p>
-              <p>
+            <br/>
+            <h3>IceCube - KM3NeT - Hyper-Kamiokande - JUNO </h3>
+              <br/><br/>
 
-              <div style="text-align:center">
-              <img src="Picture/IC_JUNO_KM3_HK.png" class="IC_JUNO_KM3_HK">
-              </div>
+              <div class="im_center" style="--w: 50%; --h: 25%;"> <img src="Picture/IC_JUNO_KM3_HK.png"> </div>
+
               </blockquote>
 
+          <br/>
+          <h2> Conclusion </h2>
+            <br/><br/>
 
-          </div>
+            <blockquote> <p>En conclusion, plusieurs phénomènes sont liés aux supernovae à effondrement de coeur. Le <i> trapping </i> notamment pourrait jouer un rôle très important dans le mécanisme de ces phénomènes
+            astrophysiques cataclysmiques.</p>
 
-          <div class="contenu" style="position:absolute; left:4%; top:7700px; width:90%; height:380px">
+            <br/>
 
-            <p>
-            <h1> Conclusion </h1>
-            <p>
-            <p>
+            <p>Le flux de neutrinos détecté quelques heures avant le signal électromagnétique nous permet effectivement de localiser la source de manière assez précise. La détection de la prochaine supernova
+            galactique est un enjeu majeur dans les années à venir, elle nous permettrait de mieux comprendre  le rôle des neutrinos au sein des étoiles en fin de vie ainsi que les propriétés intrinsèques de
+            ces particules mystérieuses.</p>
 
-              <blockquote> En conclusion, plusieurs phénomènes sont liés aux supernovae à effondrement de coeur. Le <i> trapping </i> notamment pourrait jouer un rôle très important dans le mécanisme de ces phénomènes
-              astrophysiques cataclysmiques.
+            <br/>
 
-              <p>
+            <p>La suite de cette étude permet d’introduire les probabilités bayésiennes, dans laquel on rajoute un  prior. Ceci nous permet de contraindre la position de la source dans le ciel. On a pu ensuite
+            quantifier cette différence entre une approche fréquentiste et l’approche bayésienne par une carte de différence relative. Celle-ci permet de montrer qu’une différence allant jusqu’à 60% de diminution
+            en ce qui  concerne les probabilités bayésiennes.</p>
 
-              Le flux de neutrinos détecté quelques heures avant le signal électromagnétique nous permet effectivement de localiser la source de manière assez précise. La détection de la prochaine supernova
-              galactique est un enjeu majeur dans les années à venir, elle nous permettrait de mieux comprendre  le rôle des neutrinos au sein des étoiles en fin de vie ainsi que les propriétés intrinsèques de
-              ces particules mystérieuses.
+            <br/>
 
-              <p>
-
-              La suite de cette étude permet d’introduire les probabilités bayésiennes, dans laquel on rajoute un  prior. Ceci nous permet de contraindre la position de la source dans le ciel. On a pu ensuite
-              quantifier cette différence entre une approche fréquentiste et l’approche bayésienne par une carte de différence relative. Celle-ci permet de montrer qu’une différence allant jusqu’à 60% de diminution
-              en ce qui  concerne les probabilités bayésiennes.
-
-              <p>
-
-              Pour finir, nous avons pu appliquer l’algorithme précédent pour différentes paires de détecteur et non tous en même temps. Le résultat qui en sort est que les probabilités bayesienne permettent,
-              tout comme avant, de réduire considérablement l’aire de confiance à 90% . Cette diminution est du même ordre de grandeur que pour les 5 détecteurs. Au final, l’implémentation d’une méthode de
-              surveillance en temps réel (SNEWS) peut permettre d’augmenter considérablement la qualité d’observation de la prochaine supernova galactique, ce qui pourra nous aider à mieux comprendre le rôle
-              des neutrinos dans ces mécanismes physiques. </blockquote>
+            <p>Pour finir, nous avons pu appliquer l’algorithme précédent pour différentes paires de détecteur et non tous en même temps. Le résultat qui en sort est que les probabilités bayesienne permettent,
+            tout comme avant, de réduire considérablement l’aire de confiance à 90% . Cette diminution est du même ordre de grandeur que pour les 5 détecteurs. Au final, l’implémentation d’une méthode de
+            surveillance en temps réel (SNEWS) peut permettre d’augmenter considérablement la qualité d’observation de la prochaine supernova galactique, ce qui pourra nous aider à mieux comprendre le rôle
+            des neutrinos dans ces mécanismes physiques.</p> </blockquote>
 
 
           </div>
 
-          <div class="contenu" style="position:absolute; left:4%; top:8140px; width:90%; height:250px">
-
-            <p>
-            <h1> Références </h1>
-            <p>
-            <p>
+          <br/>
+          <h2> Références </h2>
+            <br/><br/>
 
             <blockquote>
 
@@ -369,9 +327,6 @@
             </ul>
 
             </blockquote>
-
-          </div>
-
 
     </div>
 </body>
