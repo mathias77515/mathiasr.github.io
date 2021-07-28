@@ -305,41 +305,35 @@
                 de cornet (jouant le rôle de fentes d’interférences), une figure d’interférence va se former. En ouvrant tour à tour des paires de cornets équivalentes, on va pouvoir observer une figure spécifique qui doit être
                 la même pour différentes paires. De petites imperfections peuvent se cacher dans les figures d’interférences et sont nécessairement dû aux effets systématiques de l’instrument. Cette méthode permet de les
                 quantifier et de traiter le lobe synthétique en conséquence. On a ici une méthode très forte de correction des effets systématiques qui est directement lié à la nature interférométrique de l’instrument, cela
-                serait impossible avec un imageur classique.</p> </div>
-
-
-
-
-            </blockquote>
-
-          <div class="contenu" style="position:absolute; left:4%; top:10440px; width:90%; height:3750px">
+                serait impossible avec un imageur classique.</p> </div> </blockquote>
 
             <blockquote>
 
-              <h1> Séparation de composantes </h1>
+            <br/><br/>
+            <h2> Séparation de composantes </h2>
 
-                <br/>
+              <br/>
 
-                <p> On s’intéresse ici au problème de séparation de composante grâce à l’algorithme FG-Buster mais avant de voir les résultats que l’on peut produire, il est peut être intéressant
-                de voir le problème du map-making. Pour cela, on définit le signal que l’on reçoit dans chaque pixel comme : </p>
+              <p> On s’intéresse ici au problème de séparation de composante grâce à l’algorithme FG-Buster mais avant de voir les résultats que l’on peut produire, il est peut être intéressant
+              de voir le problème du map-making. Pour cela, on définit le signal que l’on reçoit dans chaque pixel comme :</p>
 
-                <br/><br/>
+              <br/><br/>
 
-                <div class="cmath" align="center"> `vec(d)_p = A_p(vec(beta)).vec(s)_p + vec(n)_p` </div>
+              <div class="cmath" align="center"> `vec(d)_p = A_p(vec(beta)).vec(s)_p + vec(n)_p` </div>
 
-                <br/><br/>
+              <br/><br/>
 
-                <p> où <span> `vec(d)` </span> est le signal que l’on reçoit grâce à l’instrument (ou les TOD : Time Ordered Data dans le cas de QUBIC), <span> `A(vec(beta))` </span> est la
-                matrice de mélange paramétrisé par les paramètres inconnus <span> `vec(beta)` </span> à estimer. Enfin, le vecteur <span> `vec(n)` </span> représente le bruit sur notre carte.
-                Le problème est résumé dans l’annexe A et permet de voir la difficulté du traitement de données ainsi que de l’étape du map-making. On peut représenter l’équation ci-dessus de
-                la manière suivante : </p>
+              <p>où <span> `vec(d)` </span> est le signal que l’on reçoit grâce à l’instrument (ou les TOD : Time Ordered Data dans le cas de QUBIC), <span> `A(vec(beta))` </span> est la
+              matrice de mélange paramétrisé par les paramètres inconnus <span> `vec(beta)` </span> à estimer. Enfin, le vecteur <span> `vec(n)` </span> représente le bruit sur notre carte.
+              Le problème est résumé dans l’annexe A et permet de voir la difficulté du traitement de données ainsi que de l’étape du map-making. On peut représenter l’équation ci-dessus de
+              la manière suivante : </p>
 
-                <br/><br/>
+              <br/><br/>
 
-                <div class="cmath" align="center"> `((d_(text(pixel 1))),
-                                                     (d_(text(pixel 2))),
-                                                     (...),
-                                                     (d_(text(pixel N)))) =
+              <div class="cmath" align="center"> `((d_(text(pixel 1))),
+                                                   (d_(text(pixel 2))),
+                                                   (...),
+                                                   (d_(text(pixel N)))) =
 
                                                      ((A_1^(text(CMB)), A_1^(text(DUST))),
                                                       (A_2^(text(CMB)), A_2^(text(DUST))),
@@ -351,78 +345,76 @@
 
                                                       ((n_(text(pixel 1))), (n_(text(pixel 2))), (...), (n_(text(pixel N))))` </div>
 
-                <br/><br/>
+              <br/><br/>
 
-                <p> Dans l’annexe A, on a fait le développement de la likelihood utilisé par FG-Buster dans laquelle on a pu injecter l’expression du signal <span> `vec(s)`</span>. Cette
-                  opération nous permet de définir (voir le développement en annexe A) la fonction de vraisemblance spectrale tel que : </p>
+              <p> Dans l’annexe A, on a fait le développement de la likelihood utilisé par FG-Buster dans laquelle on a pu injecter l’expression du signal <span> `vec(s)`</span>. Cette
+              opération nous permet de définir (voir le développement en annexe A) la fonction de vraisemblance spectrale tel que : </p>
 
-                <div class="cmath" align="center"> `-2 log mathcal{L}_(text(spec)) (beta) = K + (A^t N^(-1) vec(d))^t (A^t N^(-1) A)^(-1) (A^t N^(-1) vec(d))` </div>
+              <div class="cmath" align="center"> `-2 log mathcal{L}_(text(spec)) (beta) = K + (A^t N^(-1) vec(d))^t (A^t N^(-1) A)^(-1) (A^t N^(-1) vec(d))` </div>
 
-                <p> Cette expression dépend uniquement des indices spectraux que l’on cherche à estimer ici. On va donc chercher à trouver la valeur des β (il peut y en avoir plusieurs) qui minimise cette fonction de vraisemblance.
-                  Une fois ces indices spectraux estimés, nous pourront créer les cartes de poussières et de CMB séparément. Dans notre cas, on fait l’hypothèse que la poussière est définie par une relation de corps gris à une
-                  température <span> `T` </span>, une fréquence <span> `nu` </span> et possédant un indice spectral <span> `beta_d` </span>. Cette relation est de la forme : </p>
+              <p> Cette expression dépend uniquement des indices spectraux que l’on cherche à estimer ici. On va donc chercher à trouver la valeur des β (il peut y en avoir plusieurs) qui minimise cette fonction de vraisemblance.
+              Une fois ces indices spectraux estimés, nous pourront créer les cartes de poussières et de CMB séparément. Dans notre cas, on fait l’hypothèse que la poussière est définie par une relation de corps gris à une
+              température <span> `T` </span>, une fréquence <span> `nu` </span> et possédant un indice spectral <span> `beta_d` </span>. Cette relation est de la forme : </p>
 
-                <div class="cmath" align="center"> `s_d(nu) = A_d (nu)/(e^((h nu)/(k T)) - 1) (e^((h nu_0)/(k T)) - 1)/(nu_0) (nu/nu_0)^(beta_d)` </div>
+              <div class="cmath" align="center"> `s_d(nu) = A_d (nu)/(e^((h nu)/(k T)) - 1) (e^((h nu_0)/(k T)) - 1)/(nu_0) (nu/nu_0)^(beta_d)` </div>
 
-                <h2> Séparation dans un cas simple : sans bruit </h2>
+              <h3> Séparation dans un cas simple : sans bruit </h3>
 
-                  On peut commencer à appliquer cet algorithme aux cartes générées par l’instrument QUBIC. On se placera dans le cas de 5 sous bandes dont les fréquences et résolutions angulaires sont résumés dans le tableau ci-dessous :
+                On peut commencer à appliquer cet algorithme aux cartes générées par l’instrument QUBIC. On se placera dans le cas de 5 sous bandes dont les fréquences et résolutions angulaires sont résumés dans le tableau ci-dessous :
 
-                  <br/>
+                <br/>
 
-                  <table class="center_table">
-                  <tr>
-                    <th rowspan = "2"> 150 GHz </th>
-                    <th><span>nu</span> (GHz) </th>
-                    <td>  134.63  </td>
-                    <td>  141.57  </td>
-                    <td>  148.87  </td>
-                    <td>  156.54  </td>
-                    <td>  164.61  </td>
-                  </tr>
+                <table class="center_table">
+                <tr>
+                  <th rowspan = "2"> 150 GHz </th>
+                  <th><span>nu</span> (GHz) </th>
+                  <td>  134.63  </td>
+                  <td>  141.57  </td>
+                  <td>  148.87  </td>
+                  <td>  156.54  </td>
+                  <td>  164.61  </td>
+                </tr>
 
-                  <tr>
-                    <th>FWHM (deg) </th>
-                    <td>  0.43750306  </td>
-                    <td>  0.41605639  </td>
-                    <td>  0.39566106  </td>
-                    <td>  0.3762655  </td>
-                    <td>  0.35782075  </td>
-                  </tr>
+                <tr>
+                  <th>FWHM (deg) </th>
+                  <td>  0.43750306  </td>
+                  <td>  0.41605639  </td>
+                  <td>  0.39566106  </td>
+                  <td>  0.3762655  </td>
+                  <td>  0.35782075  </td>
+                </tr>
 
-                  <tr>
-                    <th rowspan = "2"> 220 GHz </th>
-                    <th><span>nu</span> (GHz) </th>
-                    <td>  197.5  </td>
-                    <td>  207.6  </td>
-                    <td>  218.3  </td>
-                    <td>  229.6  </td>
-                    <td>  241.4  </td>
-                  </tr>
+                <tr>
+                  <th rowspan = "2"> 220 GHz </th>
+                  <th><span>nu</span> (GHz) </th>
+                  <td>  197.5  </td>
+                  <td>  207.6  </td>
+                  <td>  218.3  </td>
+                  <td>  229.6  </td>
+                  <td>  241.4  </td>
+                </tr>
 
-                  <tr>
-                    <th>  FWHM (deg)  </th>
-                    <td>  0.29829754  </td>
-                    <td>  0.28367481  </td>
-                    <td>  0.2697689  </td>
-                    <td>  0.25654467  </td>
-                    <td>  0.24396869  </td>
-                  </tr>
+                <tr>
+                  <th>  FWHM (deg)  </th>
+                  <td>  0.29829754  </td>
+                  <td>  0.28367481  </td>
+                  <td>  0.2697689  </td>
+                  <td>  0.25654467  </td>
+                  <td>  0.24396869  </td>
+                </tr>
 
                 </table>
 
-                  <br/>
+                <br/>
 
-                  Ici on se place dans un cas simple afin d’appréhender la séparation de composantes avec FG-Buster. On considère donc que nos cartes possèdent donc un signal CMB ainsi qu’un signal de poussière que l’on voudra
-                  séparer. Cette séparation se fera donc sur 5 sous-bandes et pour une fréquence de référence ν150 = 150 GHz et ν220 = 220 GHz. Le tableau 4.1 nous montre que nos cartes sont à 00 des résolutions différentes, ce
-                  qui doit être pris en compte après discussion avec les auteurs de la méthode. L’ajout d’une fonction de mise à la même résolution a été une des étapes déterminantes. On lisse donc nos cartes avec un noyau
-                  gaussien afin de dégrader nos cartes à la pire résolution de chaque bande.
+                <p>Ici on se place dans un cas simple afin d’appréhender la séparation de composantes avec FG-Buster. On considère donc que nos cartes possèdent donc un signal CMB ainsi qu’un signal de poussière que l’on voudra
+                séparer. Cette séparation se fera donc sur 5 sous-bandes et pour une fréquence de référence ν150 = 150 GHz et ν220 = 220 GHz. Le tableau 4.1 nous montre que nos cartes sont à 00 des résolutions différentes, ce
+                qui doit être pris en compte après discussion avec les auteurs de la méthode. L’ajout d’une fonction de mise à la même résolution a été une des étapes déterminantes. On lisse donc nos cartes avec un noyau
+                gaussien afin de dégrader nos cartes à la pire résolution de chaque bande.</p>
 
-                  <div class="im_center" style="--w: 40%; --h: 20%;"> <img src="Picture/inputs.png"> </div>
+                <div class="im_center" style="--w: 40%; --h: 20%;"> <img src="Picture/inputs.png"> </div>
 
 
             </blockquote>
-
-          </div>
 </body>
 </html>
