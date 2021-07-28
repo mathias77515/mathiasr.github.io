@@ -4,7 +4,7 @@
 git add --all
 
 # Commit the new changements
-git commit -m $1
+git commit -m "New version with sh file"
 
 # Pushing
 git push -u origin master
