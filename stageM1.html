@@ -18,7 +18,8 @@
             <div class="onglet_1 onglet"><a href="parcours.html">Parcours</a></div>
             <div class="onglet_2 onglet"><a href="stageM1.html">Stage M1</a></div>
             <div class="onglet_3 onglet"><a href="stageM2.html">Stage M2</a></div>
-            <div class="onglet_4 onglet"><a href="contact.html">Contact</a></div>
+            <div class="onglet_4 onglet"><a href="skills.html">Compétence</a></div>
+            <div class="onglet_5 onglet"><a href="contact.html">Contact</a></div>
         </div>
 
         <p>
@@ -31,7 +32,7 @@
           <blockquote>
 
           <p>
-          <h2> Principe et détection </h2>
+          <h2> Présentation </h2>
 
             </br></br></br>
 
@@ -40,15 +41,17 @@
               sous la direction d'Alexis Coleiro. J'ai pu travailler sur des <i> méthodes de triangulation d'un signal de neutrinos provenant
               de supernova à effondrement de coeur (CCSN)</i>.</p> <br />  <br />  <br />
 
-              Dans cette première étude, on considère 5 détecteurs placés à différents endroits sur le globe :
+          <h2> Principe et détection </h2>
 
-              <ul>
-                <li>KM3NeT (Mer Méditerranée)</li>
-                <li>Super-Kamiokande (Japon)</li>
-                <li>Hyper-Kamiokande (Japon)</li>
-                <li>Icecube (Antarctique)</li>
-                <li>JUNO (Chine)</li>
-              </ul>
+            Dans cette première étude, on considère 5 détecteurs placés à différents endroits sur le globe :
+
+            <ul>
+              <li>KM3NeT (Mer Méditerranée)</li>
+              <li>Super-Kamiokande (Japon)</li>
+              <li>Hyper-Kamiokande (Japon)</li>
+              <li>Icecube (Antarctique)</li>
+              <li>JUNO (Chine)</li>
+            </ul>
 
             <div class="im_center" style="--w: 50%; --h: 25%;"> <img src="Picture/detecteurM1.png"> </div>
 
@@ -67,32 +70,34 @@
               `Delta t_(ij) = ((vec(r)_(i) - vec(r)_(j)).vec(n))/c`
             </div>
 
-            <br />  <br /> <br />
+            <br/> <br/><br/>
 
-            où <math> `vec(n)` </math> est la direction de visée et <math> `c` </math> est la célérité de la lumière.
+            <p>où <math> `vec(n)` </math> est la direction de visée et <math> `c` </math> est la célérité de la lumière.
             Les positions relatives des détecteurs produisent un délai entre les deux détections du fait de la vitesse finie de la lumière et de la position fixe des détecteurs.
-            Cette différence permet la construction d’un minimum de la fonction <math> `chi^2` </math> qui sera la position privilégié de notre source dans le ciel.
+            Cette différence permet la construction d’un minimum de la fonction <math> `chi^2` </math> qui sera la position privilégié de notre source dans le ciel.</p>
+
+            <br/><br/>
 
             <div class="im_center" style="--w: 50%; --h: 25%;"> <img src="Picture/tab_all_detec.png"> </div>
 
+            <br/><br/>
+
             <p>Le tableau ci-dessus montre l'incertitude sur le décalage temporel entre les détections pour chaques paires de détecteurs (en ms). La position des détecteurs jouent
             un rôle déterminants dans la localisation de la source, plus ceux-ci sont éloignés et plus le décalage temporel sera grand : on aura une localisation plus précise de
-            la source. Lors de nos expériences, pour un ensemble de détecteurs donnés, on reconstruit un décalage temporel observé que l'on appelera <math> `Delta t_(ij)^(obs)` </math>.
+            la source. Lors de nos expériences, pour un ensemble de détecteurs donnés, on reconstruit un décalage temporel observé que l'on appelera <span> `Delta t_(ij)^(obs)` </span>.
             En comparaison, on tente de localiser la source sur l'ensemble du ciel pour lesquelles chaque direction de visée nous donnerais un certains décalage temporel, on le notera
-            à présent <math> `Delta t_(ij)^(true)` </math>. En comparant maintenant ces deux décalages temporels pour une certaine direction de visée (que l'on caractérisera par
-            l'ascension droite <math> `alpha` </math> et la déclinaison <math> `delta` </math>) et en prenant en compte l'incertitude sur la détection noté
-            <math> `sigma_(ij)` </math>, on peut reconstruire une fonction <math> `chi^2 (alpha, delta)` </math> nous donnant la probabilité de trouver la source dans chaque pixel. </p></blockquote>
+            à présent <span> `Delta t_(ij)^(true)`</span>. En comparant maintenant ces deux décalages temporels pour une certaine direction de visée (que l'on caractérisera par
+            l'ascension droite <span> `alpha` </span> et la déclinaison <span> `delta` </span>) et en prenant en compte l'incertitude sur la détection noté
+            <span> `sigma_(ij)` </span>, on peut reconstruire une fonction <span> `chi^2 (alpha, delta)` </span> nous donnant la probabilité de trouver la source dans chaque pixel. </p></blockquote>
 
             <div class="cmath" align="center">
               `chi_(ij)^2(alpha, delta) = ((Delta t_(ij)^(obs) (alpha', delta') - Delta t_(ij)^(true) (alpha, delta))/sigma_(ij))^2`
             </div>
 
-          </div>
+          <blockquote>
 
           <h2>Résultats</h2>
             <br/><br/>
-
-            <blockquote>
 
             <h3>Localisation </h3>
               <br/><br/>
@@ -132,7 +137,7 @@
 
 
                 <p>Sur cette figure, nous avons représenté la valeur de l’aire de confiance à 90% pour chaque position possible de la source. Nous avons réalisé cette simulation avec 500 expériences par pixels,
-                c’est-à-dire que nous avons créée 500 cartes de <math> `chi^2` </math> puis trouvé les 500 minimum de la fonction pour une même position dans le ciel. Cette méthode permet donc de voir la distribution de l’aire à 90%
+                c’est-à-dire que nous avons créée 500 cartes de <span> `chi^2` </span> puis trouvé les 500 minimum de la fonction pour une même position dans le ciel. Cette méthode permet donc de voir la distribution de l’aire à 90%
                 en fonction de la position de la source.</p>
 
               <h3> Méthode analytique </h3>
@@ -145,16 +150,16 @@
 
                 <br/><br/>
 
-                <p>L’équation nous permet de trouver les positions dans le ciel où la probabilité d’avoir une source aura atteint un certain niveau de confiance <math> `beta` </math> . Cette équation prend
-                aussi en compte le nombre q de degrés de liberté, dans notre cas q = 2 pour l’ascension droite <math> `alpha` </math> et la déclinaison <math> `delta` </math> . Le terme <math> `chi_(min)^2` </math>
-                est simplement le minimum de notre carte de <math> `chi^2` </math> . Le terme <math> `Delta chi_(q, beta)^2` </math> est une valeur tabulée fixe. La résolution de l’équation s’effectue simplement
-                en retrouvant les positions où la valeur de la fonction <math> `chi^2` </math> est plus petite que le terme de droite. Nous remarquons que suivant le niveau de confiance que l’on souhaite, la valeur
-                de <math> `Delta chi_(q, beta)^2` </math> sera différente et donc l’aire de confiance aura une surface plus ou moins grande. L’avantage de cette méthode est quelle permet de réduire considérablement
+                <p>L’équation nous permet de trouver les positions dans le ciel où la probabilité d’avoir une source aura atteint un certain niveau de confiance <span> `beta` </span>. Cette équation prend
+                aussi en compte le nombre q de degrés de liberté, dans notre cas <span> `q=2` </span> pour l’ascension droite <span> `alpha` </span> et la déclinaison <span> `delta` </span>. Le terme <span> `chi_(min)^2` </span>
+                est simplement le minimum de notre carte de <span> `chi^2` </span>. Le terme <span> `Delta chi_(q, beta)^2` </span> est une valeur tabulée fixe. La résolution de l’équation s’effectue simplement
+                en retrouvant les positions où la valeur de la fonction <span> `chi^2` </span> est plus petite que le terme de droite. Nous remarquons que suivant le niveau de confiance que l’on souhaite, la valeur
+                de <span> `Delta chi_(q, beta)^2` </span> sera différente et donc l’aire de confiance aura une surface plus ou moins grande. L’avantage de cette méthode est quelle permet de réduire considérablement
                 le temps de calcul puisqu’on effectue seulement une expérience par pixel. </p></blockquote>
 
                 <div class="im_center" style="--w: 50%; --h: 25%;"> <img src="Picture/MC_ana_M1.png"> </div>
 
-            <br/>
+              <br/>
 
           <h2>Probabilité bayésienne</h2>
             <br/><br/>
@@ -212,7 +217,7 @@
 
             <br/><br/>
 
-            <p>L’écart relatif peut être calculé en remplaçant <math> `f_(text{prior})` </math> par la carte de droite et <math> `f_(text{sans prior})` </math> par la carte de gauche de la figure ci-dessus. Cette carte
+            <p>L’écart relatif peut être calculé en remplaçant <span> `f_(text{prior})` </span> par la carte de droite et <span> `f_(text{sans prior})` </span> par la carte de gauche de la figure ci-dessus. Cette carte
             doit nous montrer les directions où l’approche bayésienne est plus précise qu’une approche fréquentiste et au contraire, les emplacements du ciel où cette approche ne permet pas une bonne reconstruction
             de la position de la source.</p>
 
@@ -263,9 +268,9 @@
               <div class="im_center" style="--w: 50%; --h: 25%;"> <img src="Picture/IC_KM3_HK.png"> </div>
 
               <p>Nous pouvons retrouver ce que nous montre la figure, l’intersection entre 3 sphères est deux points dans laquelle une des deux contient notre source. Nous utilisons ici IceCube -
-              KM3NeT - Hyper-Kamiokande. De gauche à droite, nous avons la carte de distribution des N minimums de la fonction <math> `chi^2` </math> , l’aire de confiance à 90 % dans une approche
-              fréquentiste et  enfin l’aire de confiance en utilisant une approche bayésienne. Avec la première approche, la valeur de l’aire est d’environ <math> `330 text{ deg}^2` </math> ,
-              en revanche, en utilisant une approche bayésienne, la valeur de cette surface diminue jusqu’à <math> `140 text{ deg}^2` </math>. La diminution est très importante (environ 58%) et
+              KM3NeT - Hyper-Kamiokande. De gauche à droite, nous avons la carte de distribution des N minimums de la fonction <span> `chi^2` </span> , l’aire de confiance à 90 % dans une approche
+              fréquentiste et  enfin l’aire de confiance en utilisant une approche bayésienne. Avec la première approche, la valeur de l’aire est d’environ <span> `330 text{ deg}^2` </span> ,
+              en revanche, en utilisant une approche bayésienne, la valeur de cette surface diminue jusqu’à <span> `140 text{ deg}^2` </span>. La diminution est très importante (environ 58%) et
               signifie que notre approche bayésienne fonctionne tout autant pour seulement 3 détecteurs.</p>
 
             <br/>

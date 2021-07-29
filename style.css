@@ -150,6 +150,12 @@ td, th /* Mettre une bordure sur les td ET les th */
         background:#FFFFFF;
         border-bottom:1px solid black;
 }
+
+.onglet_5
+{
+        background:#FFFFFF;
+        border-bottom:1px solid black;
+}
 .contenu
 {
         background-color:#FFFFFF;
