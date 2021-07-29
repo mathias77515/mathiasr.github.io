@@ -164,6 +164,10 @@ td, th /* Mettre une bordure sur les td ET les th */
         padding:5px;
 }
 
+.Degrade {
+  background-image:linear-gradient(white, black);
+         }
+
 
 hr {
     border: none;
