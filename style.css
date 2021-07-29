@@ -156,7 +156,36 @@ td, th /* Mettre une bordure sur les td ET les th */
         background:#FFFFFF;
         border-bottom:1px solid black;
 }
-.contenu
+.contenu_1
+{
+        background-color:#FFFFFF;
+        border:1px solid white;
+        margin-top:-1px;
+        padding:5px;
+}
+
+.contenu_2
+{
+        background-color:#FFFFFF;
+        border:1px solid white;
+        margin-top:-1px;
+        padding:5px;
+}
+.contenu_3
+{
+        background-color:#FFFFFF;
+        border:1px solid white;
+        margin-top:-1px;
+        padding:5px;
+}
+.contenu_4
+{
+        background-color:#FFFFFF;
+        border:1px solid white;
+        margin-top:-1px;
+        padding:5px;
+}
+.contenu_5
 {
         background-color:#FFFFFF;
         border:1px solid white;
@@ -167,6 +196,11 @@ td, th /* Mettre une bordure sur les td ET les th */
 .Degrade {
   background-image:linear-gradient(white, black);
          }
+
+.bordereau_parcours{
+  background: #B1B1B1;
+  font: 120% "American Typewriter", Georgia
+}
 
 
 hr {
@@ -204,6 +238,6 @@ body
   min-width:600px;
   max-width:2000px;
 	padding: 0 ;
-	font: 100% "Trebuchet MS", Georgia ;
+	font: 100% "Arial", Georgia ;
 	background: #FFFFFF ;
 }
