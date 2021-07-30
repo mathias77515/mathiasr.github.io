@@ -1,0 +1,349 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <link type="text/css" rel="stylesheet" media="all" title="CSS" href="style.css" />
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=AM_CHTML"></script>
+      <script type="text/javascript" src="https://example.com/mathjax/MathJax.js?config=TeX-AMS_CHTML"></script>
+      <style>
+        img {
+          max-width: 100%;
+            }
+      </style>
+</head>
+<body>
+
+  <div style="width: 4%; height: 100%; margin-left: 90%">
+    <a href="skills_fr.html"><button><img src="Picture/fra.png"></button></a>
+  </div>
+
+  <div style="width: 4.5%; height: 100%; margin-left: 94%; margin-top: -2.5%">
+    <a href="skills_en.html"><button><img src="Picture/en.png"></button></a>
+  </div>
+        <div class="contenu_2">
+        <div class="onglets" style="margin-left: 5%; margin-top: 2%">
+            <div class="onglet_1 onglet"><a href="parcours_fr.html">Parcours</a></div>
+            <div class="onglet_2 onglet"><a href="stageM1_fr.html">Stage M1</a></div>
+            <div class="onglet_3 onglet"><a href="stageM2_fr.html">Stage M2</a></div>
+            <div class="onglet_4 onglet"><a href="skills_fr.html">Compétences</a></div>
+            <div class="onglet_5 onglet"><a href="contact_fr.html">Contact</a></div>
+        </div>
+
+        <p>
+
+        <h1>Stage de 1ère année de Master (2 mois)</h1>
+          <br/><br/>
+
+          <img src="Picture/APC.png" class="APC">
+
+          <blockquote>
+
+          <p>
+          <h2> Présentation </h2>
+
+            </br></br></br>
+
+            <p>Durant ma première année de master de physique fondamentale à l'Université de Paris, j'ai pu effectuer un stage de 2 mois
+              dans le département d'Astrophysique des hautes énergies du laboratoire d'astroparticule et de cosmologie de Paris (APC)
+              sous la direction d'Alexis Coleiro. J'ai pu travailler sur des <i> méthodes de triangulation d'un signal de neutrinos provenant
+              de supernova à effondrement de coeur (CCSN)</i>.</p> <br />  <br />  <br />
+
+          <h2> Principe et détection </h2>
+
+            Dans cette première étude, on considère 5 détecteurs placés à différents endroits sur le globe :
+
+            <ul>
+              <li>KM3NeT (Mer Méditerranée)</li>
+              <li>Super-Kamiokande (Japon)</li>
+              <li>Hyper-Kamiokande (Japon)</li>
+              <li>Icecube (Antarctique)</li>
+              <li>JUNO (Chine)</li>
+            </ul>
+
+            <div class="im_center" style="--w: 50%; --h: 25%;"> <img src="Picture/detecteurM1.png"> </div>
+
+            <p>La position des détecteurs ainsi que leurs nombres jouent un rôle déterminant dans les futur résutlat sur la localisation
+            de la source de neutrinos. Plus le nombre de détecteur est grand, plus petite sera l'incertitude sur la position. De même,
+            plus les détecteurs sont éloignés, plus petite sera l'air de confiance à 90 %. La figure ci-dessous montre comment fonctionne
+            la méthode de triangulation. Pour deux détecteurs, la source se trouve à l'intersection des deux sphères, soit un cercle.</p>
+
+            <div class="im_center" style="--w: 50%; --h: 25%;"> <img src="Picture/triangulationM1.png"> </div>
+
+            On peut relier l'intervalle de temps avec la position des détecteurs avec la relation :
+
+            <br />  <br /> <br />
+
+            <div class="cmath" align="center">
+              `Delta t_(ij) = ((vec(r)_(i) - vec(r)_(j)).vec(n))/c`
+            </div>
+
+            <br/> <br/><br/>
+
+            <p>où <math> `vec(n)` </math> est la direction de visée et <math> `c` </math> est la célérité de la lumière.
+            Les positions relatives des détecteurs produisent un délai entre les deux détections du fait de la vitesse finie de la lumière et de la position fixe des détecteurs.
+            Cette différence permet la construction d’un minimum de la fonction <math> `chi^2` </math> qui sera la position privilégié de notre source dans le ciel.</p>
+
+            <br/><br/>
+
+            <div class="im_center" style="--w: 50%; --h: 25%;"> <img src="Picture/tab_all_detec.png"> </div>
+
+            <br/><br/>
+
+            <p>Le tableau ci-dessus montre l'incertitude sur le décalage temporel entre les détections pour chaques paires de détecteurs (en ms). La position des détecteurs jouent
+            un rôle déterminants dans la localisation de la source, plus ceux-ci sont éloignés et plus le décalage temporel sera grand : on aura une localisation plus précise de
+            la source. Lors de nos expériences, pour un ensemble de détecteurs donnés, on reconstruit un décalage temporel observé que l'on appelera <span> `Delta t_(ij)^(obs)` </span>.
+            En comparaison, on tente de localiser la source sur l'ensemble du ciel pour lesquelles chaque direction de visée nous donnerais un certains décalage temporel, on le notera
+            à présent <span> `Delta t_(ij)^(true)`</span>. En comparant maintenant ces deux décalages temporels pour une certaine direction de visée (que l'on caractérisera par
+            l'ascension droite <span> `alpha` </span> et la déclinaison <span> `delta` </span>) et en prenant en compte l'incertitude sur la détection noté
+            <span> `sigma_(ij)` </span>, on peut reconstruire une fonction <span> `chi^2 (alpha, delta)` </span> nous donnant la probabilité de trouver la source dans chaque pixel. </p></blockquote>
+
+            <div class="cmath" align="center">
+              `chi_(ij)^2(alpha, delta) = ((Delta t_(ij)^(obs) (alpha', delta') - Delta t_(ij)^(true) (alpha, delta))/sigma_(ij))^2`
+            </div>
+
+          <blockquote>
+
+          <h2>Résultats</h2>
+            <br/><br/>
+
+            <h3>Localisation </h3>
+              <br/><br/>
+
+              <p>La réalisation de simulation Monte-Carlo basé sur le calcul de N expériences est une méthode pour reconstruire une distribution de probabilité sur la position de
+              la source. Comme nous l’avons présenté précédemment, nous tirons au hasard une valeur de <math> `Delta t_(ij) (alpha, delta)` </math> selon une loi de distribution
+              gaussienne. On peut donc recréer une carte de <math> `chi_(ij)^2` </math> en fonction des deux paramètres libres <math> `alpha` </math> et <math> `delta` </math>. Il s’agit d’une représentation en deux
+              dimensions de la fonction 3. La dernière étape consiste à trouver le minimum de cette fonction que l’on sauvegardera. La répétition de ces N expériences permet de
+              créer une carte qui nous montre l’aire de confiance à 90%. Dans la suite de cette étude, on considèrera une source se situant aux coordonnées du centre galactique,
+              soit <math> `(alpha, delta) = (−94.4° , −28.9°)` </math>. L’ensemble des détecteurs cités précédemment sera utilisé lors des calculs. En effet, plus nous avons de détecteurs, plus la
+              méthode de triangulation sera précise. L’ajout de chacun d’entre eux permet de contraindre un peu plus la localisation de la supernova. </p>
+
+              <div class="im_center" style="--w: 50%; --h: 25%;"> <img src="Picture/chi2map.png"> </div>
+
+
+              <p>Sur la figure ci-dessus, le résultat des simulations Monte-Carlo est représenté. Sur la gauche, nous avons la distribution des N minimums de la fonction <math> `chi_(ij)^2` </math> . En effet, sur
+              la carte, la couleur de chaque pixel représente le nombre de fois où le minimum de la fonction se trouve dans une direction donnée du ciel. Ces minimums sont tous regroupés autour d’une position et
+              forment ainsi notre distribution de probabilité sur la localisation de la source. A droite, nous avons représenté l’aire de confiance à 90% de la distribution. Cela signifie que pour toutes nos
+              expériences, nous avons 90% des minimums qui sont tombés dans cette région du ciel.</p>
+
+            <h3> Distribution de l'aire de confiance </h3>
+              <br/><br/>
+
+              <p>Précédemment, nous avons pu voir le résultat de la méthode de triangulation par des simulations Monte-Carlo. Nous avons vu que l’on pouvait assez bien reconstruire la position de la supernova avec
+              cette méthode et ainsi tracer un contour à 90% qui nous indiquerait la portion du ciel où la source devrait se trouver. Seulement, la position de la source dans le ciel influence directement cette
+              aire à 90% . Ici, on va essayer de voir cette différence en fonction de la position de la source. Pour ce faire, on utilisera deux méthodes différentes. La première étant une méthode type Monte-Carlo,
+              qui on le rappelle s’effectue en calculant le résultat sur N expériences. Cette méthode est assez précise mais nécessitent de longs temps de calculs. Cela nous amène à notre deuxième méthode qui elle ne
+              nécessite qu’une seule expérience pour chaque position. Elle sera beaucoup plus rapide et permettra de créer une carte grâce à une formule analytique, donc sans variation et dans un cas idéal.</p>
+
+              <h3> Méthode Monte-Carlo </h3>
+                <br/><br/>
+
+                <p>Pour chacune des expériences, on place successivement la source dans chaque pixels pour calculer ensuite l'aire de confiance à 90 %. On va pouvoir voir où la détection de la source est plus difficile
+                et au contraire où elle est facilitée.</p>
+
+                <div class="im_center" style="--w: 50%; --h: 25%;"> <img src="Picture/MC_M1.png"> </div>
+
+
+                <p>Sur cette figure, nous avons représenté la valeur de l’aire de confiance à 90% pour chaque position possible de la source. Nous avons réalisé cette simulation avec 500 expériences par pixels,
+                c’est-à-dire que nous avons créée 500 cartes de <span> `chi^2` </span> puis trouvé les 500 minimum de la fonction pour une même position dans le ciel. Cette méthode permet donc de voir la distribution de l’aire à 90%
+                en fonction de la position de la source.</p>
+
+              <h3> Méthode analytique </h3>
+                <br/><br/>
+
+                <p>Nous allons donc introduire maintenant une méthode analytique permettant d’obtenir des résultats semblables et plus rapidement.</p>
+                <br/><br/>
+
+                <div class="cmath" align="center"> `chi^2(alpha, delta) &le; chi_(min)^2 + Delta chi_(q, beta)^2` </div>
+
+                <br/><br/>
+
+                <p>L’équation nous permet de trouver les positions dans le ciel où la probabilité d’avoir une source aura atteint un certain niveau de confiance <span> `beta` </span>. Cette équation prend
+                aussi en compte le nombre q de degrés de liberté, dans notre cas <span> `q=2` </span> pour l’ascension droite <span> `alpha` </span> et la déclinaison <span> `delta` </span>. Le terme <span> `chi_(min)^2` </span>
+                est simplement le minimum de notre carte de <span> `chi^2` </span>. Le terme <span> `Delta chi_(q, beta)^2` </span> est une valeur tabulée fixe. La résolution de l’équation s’effectue simplement
+                en retrouvant les positions où la valeur de la fonction <span> `chi^2` </span> est plus petite que le terme de droite. Nous remarquons que suivant le niveau de confiance que l’on souhaite, la valeur
+                de <span> `Delta chi_(q, beta)^2` </span> sera différente et donc l’aire de confiance aura une surface plus ou moins grande. L’avantage de cette méthode est quelle permet de réduire considérablement
+                le temps de calcul puisqu’on effectue seulement une expérience par pixel. </p></blockquote>
+
+                <div class="im_center" style="--w: 50%; --h: 25%;"> <img src="Picture/MC_ana_M1.png"> </div>
+
+              <br/>
+
+          <blockquote>
+          <h2>Probabilité bayésienne</h2>
+            <br/><br/>
+
+            <p>Précédemment, nous avons décrit notre méthode de triangulation par une approche fréquentiste. Nous avons démontré que la localisation dans le ciel de la supernova fait varier l’aire de confiance à
+            90% obtenue par triangulation. Nous allons maintenant essayer d’implémenter une méthode de probabilité bayésienne afin de contraindre encore plus la position de la supernova. En effet, cette étude
+            consiste a étudier un algorithme de triangulation permettant de détecter la prochaine supernova galactique. On va donc considérer dans la suite que la source se trouve dans notre galaxie. Pour étudier
+            l’influence de cette information, nous utiliserons le théorème de Bayes :</p>
+
+            <br/><br/>
+
+            <div class="cmath" align="center">
+              `P(A|B) = (P(B|A) P(A))/(P(B))`
+            </div>
+
+            <br/><br/>
+
+            <p>Le théorème précédent permet de calculer des probabilités en prenant en compte un fait que l’on connaît en amont. Ici, on définit P (B|A) comme la vraisemblance (ou likelihood en anglais). Ce terme
+            nous décrit la distribution de probabilité sur la présence d’une source dans une certaine position (α, δ) du ciel. Le deuxième terme P (A) est la probabilité à priori (ou prior), il s’agit d’un terme
+            qui nous donne une information déjà connu qu’il faut prendre en compte. Il va permettre de calculer d’une manière différente les probabilités de présence de la supernova dans le ciel. Finalement, le
+            dernier terme P (B) est l’évidence, c’est un terme de normalisation. On pourra donc d’une part s’affranchir du dénominateur et d’autre part remplacer les "A" et "B" par les variables dans notre cas,
+            soit les coordonnées (α, δ) ainsi que θ pour notre prior. On aura donc le théorème de Bayes qui s’écrira comme suit :</p>
+
+            <br/><br/>
+
+            <div class="cmath" align="center">
+              `P(alpha, delta |theta) &#8733; P(theta|alpha, delta) P(alpha, delta)`
+            </div>
+
+            <br/><br/>
+
+            <p>Il nous faut faire attention au choix de la carte qui nous servira de prior. Celle-ci est un des éléments centraux de cette étude, nous savons que les supernovae à effondrement de coeur sont causées
+            par la mort des étoiles massives. Une bonne approximation sera donc de prendre comme prior une carte montrant la densité d’étoile dans notre galaxie. En effet, il paraît logique que plus le nombre
+            d’étoile dans une direction du ciel est important, plus la probabilité d’observer une supernova dans cette même direction sera importante. Maintenant que nous avons nos deux cartes définies à partir
+            du théorème de Bayes, nous pouvons les utiliser afin de contraindre la position de la source. De la même manière qu’avant, nous définissons une source placée au centre galactique.</p>
+
+            <div class="im_center" style="--w: 50%; --h: 25%;"> <img src="Picture/like_M1.png"> </div>
+
+            <p>Ce résultat montre que l’application d’une condition simple sur la distribution de probabilité permet de réduire de manière significative l’aire de confiance. La source a été placé initialement au
+            centre galactique mais on pourra effectuer la même manoeuvre pour toutes les positions du ciel possible. De la même manière qu’avec la figure 11, nous plaçons la source dans chaque pixel successivement
+            en calculant en même temps l’aire de confiance dans toutes les directions.</p>
+
+            <div class="im_center" style="--w: 50%; --h: 25%;"> <img src="Picture/MC_like_M1.png"> </div>
+
+            <p>La figure ci-dessus nous montre deux cartes de distributions de l’aire de confiance (toujours à 90% ). Celle de gauche a été calculé par une approche fréquentiste, quant à celle de droite, elle a été
+            calculé par l’approche bayésienne que nous avons présenté. La couleur de chaque pixel représente la valeur de la surface de l’aire à 90% . On commence à voir une différence entre ces deux cartes du fait
+            de l’ajout d’un prior dans les calculs. De manière à mieux distinguer la différence entre les deux cartes de la figure ci-dessus, nous pouvons introduire la formule permettant de calculer l’écart-relatif tels
+            que :</p>
+
+            <br/><br/>
+
+            <div class="cmath" align="center">
+              `f_(text{relatif}) = (f_(text{prior}) - f_(text{sans prior}))/(f_(text{prior})) &#215; 100`
+            </div>
+
+            <br/><br/>
+
+            <p>L’écart relatif peut être calculé en remplaçant <span> `f_(text{prior})` </span> par la carte de droite et <span> `f_(text{sans prior})` </span> par la carte de gauche de la figure ci-dessus. Cette carte
+            doit nous montrer les directions où l’approche bayésienne est plus précise qu’une approche fréquentiste et au contraire, les emplacements du ciel où cette approche ne permet pas une bonne reconstruction
+            de la position de la source.</p>
+
+            <div class="im_center" style="--w: 50%; --h: 25%;"> <img src="Picture/ecart_M1.png"></div>
+
+            <p>Sur la figure ci-dessus, l’écart-relatif entre les deux cartes de la figure 16 est représenté. Sur cette carte, la couleur de chaque pixel représente la variation de l’aire à 90 % entre les deux cartes.
+            La barre de couleur est faite de tel sorte que lorsque la couleur du pixel tend vers le bleu, la carte qui inclue le prior a une aire plus petite que celle qui ne prend pas en compte le prior. Si la
+            couleur est autour du blanc, il n’y a pas une grande différence entre les deux cartes. Enfin, si la couleur du pixel tend vers le rouge, la carte qui inclue le prior possède une aire à 90 % plus grande
+            que celle qui est calculé sans le prior. Pour finir, l’intensité du pixel correspond à la valeur (en pourcentage) de la diminution ou de l’augmentation de l’aire à 90 % lorsque la source se trouve dans
+            ce pixel. Le plan galactique ainsi que le petit et le grand nuage de magellan sont plutôt bien reconstruit par cette méthode ce qui signifie que ceux-ci ont une influence notable sur le résultat final.</p>
+
+            <br/>
+
+            <p>La diminution entre l’approche bayésienne et l’approche fréquentiste peut aller jusqu’à 60% lorsque la source se situe dans notre galaxie ou dans des galaxies voisines. Au contraire, lorsque la source
+            se trouve en dehors du plan galactique, on a une augmentation de l’aire à 90% ce qui est normal puisque notre prior concerne les sources potentielles de notre galaxie et non les sources extragalactiques.
+            Le fait que l’aire de confiance augmente en taille lorsque la source est en dehors du plan galactique est bon signe car cela signifie que la probabilité dans chaque pixel composant cette aire diminue par
+            rapport à l’approche fréquentiste.</p>
+
+            <br/>
+
+            <p>Au final, l’utilisation d’une approche bayésienne permet de diminuer la taille de l’aire de confiance lorsque la source est galactique de manière notable. En revanche,
+            pour une source extragalactique, nous avons montré que la probabilité de détection diminue dans chaque pixel ce qui est encourageant. Cette approche peut donc être un bon moyen de localiser de manière
+            précise la prochaine supernova galactique.</p> </blockquote>
+
+          <br/>
+          <blockquote>
+          <h2>Quelques exemples ...</h2>
+
+            <br/><br/>
+
+            <blockquote> <p>Dans les figures précédentes, la combinaison des 5 détecteurs permet de calculer une zone de confiance assez restreinte, dans la suite nous pourrons essayer de voir les différentes zones
+            de détections pour différentes combinaisons de détecteurs.</p>
+
+            <br/>
+            <h3>IceCube - JUNO - KM3NeT </h3>
+              <br/><br/>
+
+              <div class="im_center" style="--w: 50%; --h: 25%;"> <img src="Picture/IC_JUNO_KM3.png"> </div>
+
+
+              <p>La même expérience peut être refaite pour une autre combinaison de 3 détecteurs. Ici nous avons choisi IceCube - JUNO - KM3NeT. L’aire de confiance est beaucoup plus étendue que pour le trio de
+              détecteur précédent, ceci est du à l’incertitude entre KM3NeT et JUNO qui est nettement supérieure. Cependant, l’approche bayésienne permet encore une fois de réduire considérablement la taille de
+              l’aire de confiance à 90 %. La diminution est encore une fois de l’ordre de 60 %.</p>
+
+              <br/>
+            <h3>IceCube - KM3NeT - Hyper-Kamiokande </h3>
+              <br/><br/>
+
+              <div class="im_center" style="--w: 50%; --h: 25%;"> <img src="Picture/IC_KM3_HK.png"> </div>
+
+              <p>Nous pouvons retrouver ce que nous montre la figure, l’intersection entre 3 sphères est deux points dans laquelle une des deux contient notre source. Nous utilisons ici IceCube -
+              KM3NeT - Hyper-Kamiokande. De gauche à droite, nous avons la carte de distribution des N minimums de la fonction <span> `chi^2` </span> , l’aire de confiance à 90 % dans une approche
+              fréquentiste et  enfin l’aire de confiance en utilisant une approche bayésienne. Avec la première approche, la valeur de l’aire est d’environ <span> `330 text{ deg}^2` </span> ,
+              en revanche, en utilisant une approche bayésienne, la valeur de cette surface diminue jusqu’à <span> `140 text{ deg}^2` </span>. La diminution est très importante (environ 58%) et
+              signifie que notre approche bayésienne fonctionne tout autant pour seulement 3 détecteurs.</p>
+
+            <br/>
+            <h3>IceCube - KM3NeT - Hyper-Kamiokande - JUNO </h3>
+              <br/><br/>
+
+              <div class="im_center" style="--w: 50%; --h: 25%;"> <img src="Picture/IC_JUNO_KM3_HK.png"> </div>
+
+              </blockquote>
+
+          <br/>
+          <h2> Conclusion </h2>
+            <br/><br/>
+
+            <p>En conclusion, plusieurs phénomènes sont liés aux supernovae à effondrement de coeur. Le <i> trapping </i> notamment pourrait jouer un rôle très important dans le mécanisme de ces phénomènes
+            astrophysiques cataclysmiques.
+
+            <br/><br/>
+
+            Le flux de neutrinos détecté quelques heures avant le signal électromagnétique nous permet effectivement de localiser la source de manière assez précise. La détection de la prochaine supernova
+            galactique est un enjeu majeur dans les années à venir, elle nous permettrait de mieux comprendre  le rôle des neutrinos au sein des étoiles en fin de vie ainsi que les propriétés intrinsèques de
+            ces particules mystérieuses.
+
+            <br/><br/>
+
+            La suite de cette étude permet d’introduire les probabilités bayésiennes, dans laquel on rajoute un  prior. Ceci nous permet de contraindre la position de la source dans le ciel. On a pu ensuite
+            quantifier cette différence entre une approche fréquentiste et l’approche bayésienne par une carte de différence relative. Celle-ci permet de montrer qu’une différence allant jusqu’à 60% de diminution
+            en ce qui  concerne les probabilités bayésiennes.
+
+            <br/><br/>
+
+            Pour finir, nous avons pu appliquer l’algorithme précédent pour différentes paires de détecteur et non tous en même temps. Le résultat qui en sort est que les probabilités bayesienne permettent,
+            tout comme avant, de réduire considérablement l’aire de confiance à 90% . Cette diminution est du même ordre de grandeur que pour les 5 détecteurs. Au final, l’implémentation d’une méthode de
+            surveillance en temps réel (SNEWS) peut permettre d’augmenter considérablement la qualité d’observation de la prochaine supernova galactique, ce qui pourra nous aider à mieux comprendre le rôle
+            des neutrinos dans ces mécanismes physiques.</p>
+
+            </blockquote>
+
+
+          </div>
+
+          <br/>
+          <blockquote>
+          <h2> Références </h2>
+            <br/><br/>
+
+            <ul>
+              <li> Kate Scholberg SNEWS : The SuperNova Early Warning System, High Energy Astrophysical Phenomena, 1999  </li>
+
+              <li> Kate Scholberg Supernova Neutrino Detection, High Energy Astrophysical Phenomena, 2012 </li>
+
+              <li> Hans-Thomas Janka Neutrino Emission from Supernovae, High Energy Astrophysical Phenomena, 2017  </li>
+
+              <li> Collaboration, Neutrino Physics with JUNO, High Energy Physics - Experiment, 2015  </li>
+
+              <li> Vedran Brdar, Manfred Lindner, and Xun-Jie Xu Neutrino Astronomy with Supernova Neutrinos, High Energy Astrophysical Phenomena, 2018  </li>
+
+              <li> A. Coleiro, M. Colomer Molla, D. Dornic, M. Lincetto, V. Kulikovskiy, Combining neutrino experimental light-curves for pointing to the next Galactic Core-Collapse Supernova, High Energy
+              Astrophysical Phenomena, 2020  </li>
+            </ul>
+
+            </blockquote>
+
+    </div>
+</body>
+</html>
