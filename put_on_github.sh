@@ -3,7 +3,7 @@
 
 # Move file from Desktop/HTML to Desktop/HTML/mathias77515.github.io
 
-cp picture/* mathias77515.github.io/picture
+cp Picture/* mathias77515.github.io/Picture
 cp parcours* mathias77515.github.io
 cp stageM1* mathias77515.github.io
 cp stageM2* mathias77515.github.io
@@ -23,4 +23,4 @@ git add --all
 git commit -m "New version 31/07/2021"
 
 # Pushing
-git push -u origin master
+git push
