@@ -131,65 +131,95 @@ td, th /* Mettre une bordure sur les td ET les th */
 .onglet_1
 {
         background:#FFFFFF;
-        border-bottom:1px solid black;
+        border-bottom:3px solid black;
+        border-top:3px solid black;
+        border-left:3px solid black;
+        border-right:3px solid black;
 }
 .onglet_2
 {
         background:#FFFFFF;
-        border-bottom:1px solid black;
+        border-bottom:3px solid black;
+        border-top:3px solid black;
+        border-left:3px solid black;
+        border-right:3px solid black;
 }
 .onglet_3
 {
         background:#FFFFFF;
-        border-bottom:1px solid black;
+        border-bottom:3px solid black;
+        border-top:3px solid black;
+        border-left:3px solid black;
+        border-right:3px solid black;
 }
 
 .onglet_4
 {
         background:#FFFFFF;
-        border-bottom:1px solid black;
+        border-bottom:3px solid black;
+        border-top:3px solid black;
+        border-left:3px solid black;
+        border-right:3px solid black;
 }
 
 .onglet_5
 {
         background:#FFFFFF;
-        border-bottom:1px solid black;
+        border-bottom:3px solid black;
+        border-top:3px solid black;
+        border-left:3px solid black;
+        border-right:3px solid black;
 }
 .contenu_1
 {
         background-color:#FFFFFF;
-        border:1px solid white;
-        margin-top:-1px;
-        padding:5px;
+        border:3px solid black;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        margin-left: 5%;
+        margin-right: 5%;
+        padding: 100px 100px 100px 100px;
 }
 
 .contenu_2
 {
         background-color:#FFFFFF;
-        border:1px solid white;
-        margin-top:-1px;
-        padding:5px;
+        border:3px solid black;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        margin-left: 5%;
+        margin-right: 5%;
+        padding:100px 100px 100px 100px;
 }
 .contenu_3
 {
         background-color:#FFFFFF;
-        border:1px solid white;
-        margin-top:-1px;
-        padding:5px;
+        border:3px solid black;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        margin-left: 5%;
+        margin-right: 5%;
+        padding:100px 100px 100px 100px;
 }
 .contenu_4
 {
         background-color:#FFFFFF;
-        border:1px solid white;
-        margin-top:-1px;
-        padding:5px;
+        border:3px solid black;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        margin-left: 5%;
+        margin-right: 5%;
+        padding:100px 100px 100px 100px;
 }
 .contenu_5
 {
         background-color:#FFFFFF;
-        border:1px solid white;
-        margin-top:-1px;
-        padding:5px;
+        border:3px solid black;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        margin-left: 5%;
+        margin-right: 5%;
+        padding:100px;
 }
 
 .Degrade {
@@ -198,7 +228,7 @@ td, th /* Mettre une bordure sur les td ET les th */
 
 .bordereau_parcours{
   background: #B1B1B1;
-  font: 120% "American Typewriter", Georgia
+  font: 120% "Georgia", Georgia
 }
 
 
@@ -237,10 +267,8 @@ body
   min-width:600px;
   max-width:2000px;
 	padding: 0 ;
-	font: 100% "Arial", Georgia ;
-	background: #FFFFFF ;
+	font: 100% "Comic Sans MS", Georgia ;
+	background-image: url("Picture/fond-etoile.jpg") ;
 }
-
-
 
 /* Menu des langues */
