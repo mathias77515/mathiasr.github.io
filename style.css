@@ -228,7 +228,7 @@ td, th /* Mettre une bordure sur les td ET les th */
 
 .bordereau_parcours{
   background: #B1B1B1;
-  font: 120% "Georgia", Georgia
+  font: 150% "Georgia", Georgia
 }
 
 
@@ -266,7 +266,7 @@ body
   margin:auto;
   min-width:600px;
   max-width:2000px;
-	padding: 5% ;
+	padding: 1% ;
 	font: 0.8vw "Comic Sans MS", Georgia ;
 	background-image: url("Picture/fond-etoile.jpg") ;
 }
