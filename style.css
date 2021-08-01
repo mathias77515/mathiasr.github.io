@@ -209,7 +209,7 @@ td, th /* Mettre une bordure sur les td ET les th */
         margin-bottom: 5%;
         margin-left: 5%;
         margin-right: 5%;
-        padding:100px 100px 100px 100px;
+        padding:100px 100px 100px 50px;
 }
 .contenu_5
 {
@@ -266,8 +266,8 @@ body
   margin:auto;
   min-width:600px;
   max-width:2000px;
-	padding: 0 ;
-	font: 100% "Comic Sans MS", Georgia ;
+	padding: 5% ;
+	font: 90% "Comic Sans MS", Georgia ;
 	background-image: url("Picture/fond-etoile.jpg") ;
 }
 
