@@ -178,7 +178,7 @@ td, th /* Mettre une bordure sur les td ET les th */
         margin-bottom: 5%;
         margin-left: 5%;
         margin-right: 5%;
-        padding: 100px 100px 100px 100px;
+        padding: 100px 100px 100px 50px;
 }
 
 .contenu_2
@@ -189,7 +189,7 @@ td, th /* Mettre une bordure sur les td ET les th */
         margin-bottom: 5%;
         margin-left: 5%;
         margin-right: 5%;
-        padding:100px 100px 100px 100px;
+        padding:100px 100px 100px 50px;
 }
 .contenu_3
 {
@@ -199,7 +199,7 @@ td, th /* Mettre une bordure sur les td ET les th */
         margin-bottom: 5%;
         margin-left: 5%;
         margin-right: 5%;
-        padding:100px 100px 100px 100px;
+        padding:100px 100px 100px 50px;
 }
 .contenu_4
 {
@@ -219,7 +219,7 @@ td, th /* Mettre une bordure sur les td ET les th */
         margin-bottom: 5%;
         margin-left: 5%;
         margin-right: 5%;
-        padding:100px;
+        padding:100px 100px 100px 50px;
 }
 
 .Degrade {
